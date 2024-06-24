@@ -14,6 +14,63 @@ public class AtualizarSalarioArquivoTxt {
         String nomeArquivo = "C:\\JULIO FACINA\\AmbienteJAVA\\nomes_e_enderecos.txt";
         String nomeArquivoAtualizado = "C:\\JULIO FACINA\\AmbienteJAVA\\nomes_e_enderecos_atualizado.txt";
 
+/*
+ 
+ Explicação do Uso do try
+
+No programa acima, o try foi utilizado para garantir que todos 
+os recursos que são abertos (como arquivos de leitura e escrita, 
+e fluxos de entrada do teclado) sejam devidamente fechados ao final, 
+independentemente de ocorrerem exceções ou não. Aqui estão os 
+principais pontos sobre como o try foi aplicado:
+
+Inicialização de Recursos: Dentro do bloco try, diversos recursos 
+foram inicializados usando a sintaxe do try-with-resources. Isso 
+é feito para que esses recursos sejam automaticamente fechados ao 
+final do bloco try.
+    
+FileReader, BufferedReader, FileWriter, BufferedWriter, 
+PrintWriter, InputStreamReader e BufferedReader são todos 
+recursos que são inicializados dentro do try. Esses recursos 
+são automaticamente fechados no final do bloco try, 
+independentemente de exceções ocorrerem ou não.
+
+Leitura do Arquivo e Entrada do Usuário: Dentro do try, o 
+programa lê cada linha do arquivo de entrada (nomeArquivoEntrada) 
+e permite que o usuário digite um novo salário para cada linha 
+lida. A entrada do usuário é lida usando leitorTeclado.readLine().
+
+Se ocorrerem exceções durante a leitura do arquivo (IOException), 
+o fluxo de controle será transferido para o bloco catch.
+
+Escrita no Arquivo: Após processar cada linha do arquivo de 
+entrada e obter o novo salário do usuário, o programa cria uma 
+linha atualizada (linhaAtualizada) e a escreve no arquivo de 
+saída (nomeArquivoSaida) usando escreverNoArquivo.println(linhaAtualizada).
+
+Tratamento de Exceções: O bloco catch (IOException e) captura 
+qualquer exceção de entrada/saída que possa ser lançada durante 
+a leitura ou escrita de arquivos. Em caso de exceção, uma mensagem 
+de erro é exibida usando System.out.println("Erro ao ler ou 
+escrever no arquivo: " + e.getMessage());.
+
+Fechamento de Recursos: O fechamento dos recursos é feito 
+automaticamente pelo try-with-resources ao final do bloco 
+try, incluindo o fechamento dos arquivos de leitura e escrita 
+e dos fluxos de entrada do teclado.
+
+Benefícios do try-with-resources
+
+O uso do try-with-resources simplifica o código, eliminando a 
+necessidade de explicitamente fechar recursos em um bloco finally. 
+Ele também ajuda a evitar vazamentos de recursos ao garantir que 
+todos os recursos sejam fechados corretamente, mesmo se ocorrerem 
+exceções durante a execução do programa.
+         
+        
+ */
+        
+        
         try (FileReader arquivoLeitura = new FileReader(nomeArquivo);
              BufferedReader leitor = new BufferedReader(arquivoLeitura);
              FileWriter arquivoEscrita = new FileWriter(nomeArquivoAtualizado, true);
